@@ -10,8 +10,7 @@ Wykorzystując pliki z klasami i zasobami utwórz nowy projekt oraz przekopiuj j
 
 Napisać dowolną aplikację w systemie Android z następującymi ograniczeniami:
 
-..* aplikacja zawiera co najmniej cztery widgety na ekranie co najmniej dwóch rodzajów np. TextView, EditView
-..* aplikacja powinna odpowiadać na co najmniej dwa zdarzenia np. dwa przyciski
-..* aplikacja powinna zmieniać dowolny aspekt wyglądu np. textview ma większe i grubsze czcionki
-..* aplikacja powinna dostosowywać się do wielkość ekranu (różne telefony i rozdzielczości)
-
+* aplikacja zawiera co najmniej cztery widgety na ekranie co najmniej dwóch rodzajów np. TextView, EditView
+* aplikacja powinna odpowiadać na co najmniej dwa zdarzenia np. dwa przyciski
+* aplikacja powinna zmieniać dowolny aspekt wyglądu np. textview ma większe i grubsze czcionki
+* aplikacja powinna dostosowywać się do wielkość ekranu (różne telefony i rozdzielczości)
