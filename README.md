@@ -42,4 +42,4 @@ Napisz aplikacje (galeria) przechowującą zdjęcia, każde zdjęcie dodatkowo z
 * druga aktywność powinna wracać informacje do pierwszej o liczbie gwiazdek, po czym w pierwszej aktywności obrazki zostają odpowiednio posortowane po liczbie gwiazdek
 * poprawnie obsługiwać cykl życia aktywności tzn. onCreate, onStart, onResume, onPause, onStop, onDestroy, ... (te które są potrzebne) 
 * zapamiętywać swój stan po zmianie orientacji ekranu
-* *posiadać możliwość robienia zdjęć (obsługi Camera)* i dodawania do kolekcji
+* **posiadać możliwość robienia zdjęć (obsługi Camera)** i dodawania do kolekcji
