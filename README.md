@@ -31,3 +31,15 @@ Napisz prostą aplikacje "To-Do", czyli listę zadań do zrobienia. Aplikacja za
 * ustalenie priorytetów zadań
 * sortowanie po ikonce (typ zadania)
 * . . .
+
+## Lista 2
+
+#### Zadanie 1
+Napisz aplikacje (galeria) przechowującą zdjęcia, każde zdjęcie dodatkowo zawiera krótki opis. Po uruchomieniu aplikacji, na początku pokazuje ona dostępne zdjęcia. Użytkownik może wybrać dowolną pozycję, aby zobaczyć większe zdjęcie i opis. Na ekranie dodatkowo, mamy możliwość ocenienia zdjęcia przez np. "gwiazdki". Aplikacja powinna natomiast obsługiwać:
+
+* co najmniej dwie aktywności
+* przekazywać informacje z jednej aktywności do drugiej wykorzystując intencje
+* druga aktywność powinna wracać informacje do pierwszej o liczbie gwiazdek, po czym w pierwszej aktywności obrazki zostają odpowiednio posortowane po liczbie gwiazdek
+* poprawnie obsługiwać cykl życia aktywności tzn. onCreate, onStart, onResume, onPause, onStop, onDestroy, ... (te które są potrzebne) 
+* zapamiętywać swój stan po zmianie orientacji ekranu
+* *posiadać możliwość robienia zdjęć (obsługi Camera)* i dodawania do kolekcji
