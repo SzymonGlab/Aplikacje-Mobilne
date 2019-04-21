@@ -14,3 +14,13 @@ Napisać dowolną aplikację w systemie Android z następującymi ograniczeniami
 * aplikacja powinna odpowiadać na co najmniej dwa zdarzenia np. dwa przyciski
 * aplikacja powinna zmieniać dowolny aspekt wyglądu np. textview ma większe i grubsze czcionki
 * aplikacja powinna dostosowywać się do wielkość ekranu (różne telefony i rozdzielczości)
+
+## Lista 2
+
+### Zadanie 1
+
+Napisz grę w kółko i krzyżyk, gdzie dwóch graczy na zmianę naciska przyciski w siatce 5x5 oznaczone odpowiednio przez "X" lub "O". Jeśli, któryś z graczy ułoży swoje litery pionowo, poziomo lub po przekątnej to wygrywa. Wykorzystaj odpowiedni Layout do rozłożenia przycisków oraz zrób tak aby przyciski wypełniały odpowiednio ekran i czcionka była odpowiednio duża (możesz to przetestować na emulatorze dla różnych rozdzielczości ekranów). Prostsza wersja, gry jest taka, że gracze są ludźmi i grają na zmianę. W bardziej zaawansowanej wersji zrób, aby można było grać z komputerem np. wymyślając jakąś strategie która będzie naśladowała zachowanie drugiego gracza.
+
+### Zadanie 2
+
+Napisz aplikację "Wisielec", która wyświetla po kolei obrazek wisielca oraz słowo które gracz próbuje zgadnąć. Słowo wybierane jest losowo z dostępnego słownika. Oczywiście cały czas wyświetlane jest słowo z prawidłowo zgadniętymi literami np. dla słowa komputer jeśli gracz zgadł prawidłowo litery o, m i e, słowo będzie wyglądało mniej więcej tak *?om???e?*. Do utworzenia obrazków wykorzystaj np. program GIMP nazwij je odpowiednio wisielec0.png, wisielec1.png i tak dalej. Do wyświetlania obrazków wykorzystaj ImageView. Do przechowywania słownika wykorzystaj plik strings.xml.
