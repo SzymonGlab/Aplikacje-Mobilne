@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Guess</string>
+    <string name="sign">=</string>
+    <string name="points">Points:</string>
+    <string name="attempt_no">Attempt No.:</string>
+    <string name="best_guess">Best guess:</string>
+    <string name="guess">GUESS!</string>
+    <string name="take_a_guess">Take a guess …</string>
+</resources>

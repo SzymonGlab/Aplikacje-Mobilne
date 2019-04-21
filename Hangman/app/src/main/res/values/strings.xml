@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Hangman</string>
+
+    <string-array name="words">
+        <item>mouse</item>
+        <item>kitchen</item>
+        <item>dog</item>
+        <item>cat</item>
+        <item>police</item>
+        <item>soldier</item>
+        <item>water</item>
+        <item>juice</item>
+    </string-array>
+</resources>
