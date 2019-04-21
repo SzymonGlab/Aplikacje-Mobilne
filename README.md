@@ -32,7 +32,7 @@ Napisz prostą aplikacje "To-Do", czyli listę zadań do zrobienia. Aplikacja za
 * sortowanie po ikonce (typ zadania)
 * . . .
 
-## Lista 2
+## Lista 4
 
 #### Zadanie 1
 Napisz aplikacje (galeria) przechowującą zdjęcia, każde zdjęcie dodatkowo zawiera krótki opis. Po uruchomieniu aplikacji, na początku pokazuje ona dostępne zdjęcia. Użytkownik może wybrać dowolną pozycję, aby zobaczyć większe zdjęcie i opis. Na ekranie dodatkowo, mamy możliwość ocenienia zdjęcia przez np. "gwiazdki". Aplikacja powinna natomiast obsługiwać:
