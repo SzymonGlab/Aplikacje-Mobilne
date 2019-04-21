@@ -20,30 +20,37 @@ import java.io.IOException
 import java.text.DecimalFormat
 
 
+
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var img_0: ImageView
+    private lateinit var img_1: ImageView
+    private lateinit var img_2: ImageView
+    private lateinit var img_3: ImageView
+    private lateinit var img_4: ImageView
+    private lateinit var img_5: ImageView
+    private lateinit var img_6: ImageView
+    private lateinit var img_7: ImageView
+    private lateinit var img_8: ImageView
+    private lateinit var img_9: ImageView
+    private lateinit var img_10: ImageView
+    private lateinit var img_11: ImageView
 
-    private lateinit var img_0 : ImageView
-    private lateinit var img_1 : ImageView
-    private lateinit var img_2 : ImageView
-    private lateinit var img_3 : ImageView
-    private lateinit var img_4 : ImageView
-    private lateinit var img_5 : ImageView
-    private lateinit var img_6 : ImageView
-    private lateinit var img_7 : ImageView
-    private lateinit var img_8 : ImageView
-    private lateinit var img_9 : ImageView
-    private lateinit var img_10 : ImageView
-    private lateinit var img_11 : ImageView
-    private lateinit var img_12 : ImageView
-    private lateinit var img_13 : ImageView
+    private var description = "I was born in an empty sea, My tears created oceans. " +
+            "Producing tsunami waves with emotions. " +
+            "Patrolling the open seas of an unknown galaxy. " +
+            "I was floating in front of who I am physically. " +
+            "Spiritually paralyzing mind body and soul. " +
+            "Follow me baby. "
 
-    private lateinit var emptyImage : ImageView
+    private lateinit var emptyImage: ImageView
     private lateinit var linearLayout: LinearLayout
 
+
+    private val IMAGE_INFORMATION_CODE = 997
     private val PERMISSION_CODE = 1000
-    private val IMAGE_CAPTURE_CODE= 1001
-    private val IMAGE_ADD_CODE= 1002
+    private val IMAGE_CAPTURE_CODE = 1001
+    private val IMAGE_ADD_CODE = 1002
 
     var layoutCounter = 5
 
@@ -52,8 +59,6 @@ class MainActivity : AppCompatActivity() {
     private var pictureCounter = 0
 
     private var imageList = ArrayList<ImageView>()
-
-    private var addedLayouts = ArrayList<LinearLayout>()
 
     private var imageObjects = ArrayList<ImageObject>()
 
@@ -65,9 +70,10 @@ class MainActivity : AppCompatActivity() {
         fabHandler()
         loadImageViews()
         createImageObjects()
-        loadDataFromAsset()
         addOnClickListeners()
-        pictureCounter = imageObjects.size - 1 // poniewąż tablica inicjowana od 0
+        sortByRating()
+        loadDataFromAsset()
+        pictureCounter = imageObjects.size - 1          // poniewąż tablica inicjowana od 0
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
@@ -80,12 +86,12 @@ class MainActivity : AppCompatActivity() {
             imageObjects.addAll(savedImageObjects)
 
             var newImages = pictureCounter - 12
-            while(newImages>0){
-                addNewImageView(pictureCounter - newImages, false)
+            while (newImages > 0) {
+                addNewImageView(pictureCounter - newImages)
                 newImages--
             }
 
-            pictureCounter = savedImageObjects.size-1
+            pictureCounter = savedImageObjects.size - 1
             sortByRating()
             loadDataFromAsset()
             addOnClickListeners()
@@ -99,24 +105,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
-            PERMISSION_CODE ->{
-                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        when (requestCode) {
+            PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     openCamera()
                 } else {
-                    Toast.makeText(this,"Permission denided", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Permission denided", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     private fun sortByRating() {
-        imageObjects.sortByDescending {it.avgOpinion}
+        imageObjects.sortByDescending { it.avgOpinion }
     }
 
-    private fun createImageObjects(){
-        for(i in 0 until imageList.size){
-            val image = ImageObject("pic$i.jpg", 0, 0.toFloat(), 0.toFloat(), "", null)
+    private fun createImageObjects() {
+        for (i in 0 until imageList.size) {
+            var randomOpinion = (0..5).random().toFloat()
+            val image = ImageObject("pic$i.jpg", 1, randomOpinion, randomOpinion, description, null)
             imageObjects.add(image)
         }
     }
@@ -129,11 +136,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermissions() {
-        if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
-            || checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+        if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
+            || checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+        ) {
             val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            requestPermissions(permission,PERMISSION_CODE)
-        } else{
+            requestPermissions(permission, PERMISSION_CODE)
+        } else {
             openCamera()
         }
     }
@@ -141,16 +149,16 @@ class MainActivity : AppCompatActivity() {
     private fun openCamera() {
 
         val values = ContentValues()
-        values.put(MediaStore.Images.Media.TITLE , "pic$pictureCounter.jpg")
+        values.put(MediaStore.Images.Media.TITLE, "pic$pictureCounter.jpg")
         values.put(MediaStore.Images.Media.DESCRIPTION, "Picture number $pictureCounter from camera.")
-        image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,values)
+        image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
 
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
-    private fun loadImageViews(){
+    private fun loadImageViews() {
         img_0 = findViewById(R.id.image_0)
         img_1 = findViewById(R.id.image_1)
         img_2 = findViewById(R.id.image_2)
@@ -180,9 +188,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadDataFromAsset() {
         try {
-            for(i in 0 until imageList.size){
+            for (i in 0 until imageList.size) {
                 val fileName = imageObjects[i].name
-                if(fileName == ""){
+                if (fileName == "") {
 
                     imageList[i].setImageURI(imageObjects[i].photoUri)
                 } else {
@@ -190,67 +198,68 @@ class MainActivity : AppCompatActivity() {
                     val d = Drawable.createFromStream(ims, null)
                     imageList[i].setImageDrawable(d)
                 }
-                    imageList[i].layoutParams.height = 500
-                    imageList[i].layoutParams.width = 500
+                imageList[i].layoutParams.height = 500
+                imageList[i].layoutParams.width = 500
             }
         } catch (ex: IOException) {
             return
         }
     }
 
-    private fun addOnClickListeners(){
-        Log.d("ERROREK", "IMAGE LIST SIZE = ${imageList.size}")
-        for(i in 0 until imageObjects.size){
-            Log.d("ERROREK", "CLICKED")
-            imageList[i].setOnClickListener{
+    private fun addOnClickListeners() {
+        for (i in 0 until imageObjects.size) {
+            imageList[i].setOnClickListener {
                 val intent = Intent(this, PhotoDetails::class.java)
                 intent.putExtra("imageObjects", imageObjects)
                 intent.putExtra("index", i)
-                startActivityForResult(intent, 997)
+                startActivityForResult(intent, IMAGE_INFORMATION_CODE)
             }
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == 997) {
+        if (requestCode == IMAGE_INFORMATION_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 imageObjects = data!!.getParcelableArrayListExtra("imageObjects")
-                val index = data.getIntExtra("index",0)
-                Toast.makeText(this, "Now avarage opinion is " + decFormat.format(imageObjects[index].avgOpinion), Toast.LENGTH_SHORT).show()
+                val index = data.getIntExtra("index", 0)
+                Toast.makeText(
+                    this,
+                    "Now avarage opinion is " + decFormat.format(imageObjects[index].avgOpinion),
+                    Toast.LENGTH_SHORT
+                ).show()
                 sortByRating()
                 loadDataFromAsset()
             } else {
                 super.onActivityResult(requestCode, resultCode, data)
             }
-        } else if(requestCode == IMAGE_CAPTURE_CODE){
-            if(resultCode == Activity.RESULT_OK){
+        } else if (requestCode == IMAGE_CAPTURE_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
                 openAddPhoto(image_uri)
             }
-        } else if(requestCode == IMAGE_ADD_CODE){
-            if(resultCode == Activity.RESULT_OK){
+        } else if (requestCode == IMAGE_ADD_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
                 val description = data!!.getStringExtra("description")
                 val photoUri = data!!.getParcelableExtra<Uri>("imgUri")
-                val imageObject = ImageObject("",0,0.toFloat(),0.toFloat(),description,photoUri)
+                val imageObject = ImageObject("", 0, 0.toFloat(), 0.toFloat(), description, photoUri)
                 pictureCounter++
                 imageObjects.add(imageObject)
-                addNewImageView(pictureCounter, true)
+                addNewImageView(pictureCounter)
 
                 addOnClickListeners()
             }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
 
-    private fun openAddPhoto(uri : Uri?) {
+    private fun openAddPhoto(uri: Uri?) {
         val intent = Intent(this, AddPhoto::class.java)
         intent.putExtra("imgUri", uri)
         startActivityForResult(intent, IMAGE_ADD_CODE)
     }
 
-    private fun addNewImageView(photoNumber : Int, newPhoto : Boolean) {
-        if(photoNumber%2 == 0){
+    private fun addNewImageView(photoNumber: Int) {
+        if (photoNumber % 2 == 0) {
             val params = img_0.layoutParams as LinearLayout.LayoutParams
             val newImage = ImageView(this)
 
@@ -269,8 +278,7 @@ class MainActivity : AppCompatActivity() {
 
             scrollViewLayout.addView(linearLayout)
             imageList.add(newImage)
-//            addedLayouts.add(linearLayout)
-            layoutCounter ++
+            layoutCounter++
         } else {
             emptyImage.setImageURI(imageObjects[photoNumber].photoUri)
             linearLayout.addView(emptyImage)

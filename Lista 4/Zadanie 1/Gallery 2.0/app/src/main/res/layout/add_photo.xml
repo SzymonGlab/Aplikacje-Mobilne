@@ -28,6 +28,7 @@
                 android:layout_height="match_parent" android:layout_weight="5">
             <EditText
                     android:layout_width="match_parent"
+                    android:maxLength="280"
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine"
                     android:ems="10"
