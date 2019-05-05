@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:background="@drawable/back" android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/basicLaout"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <TextView
+                android:text="NEON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/textView4"
+                android:textColor="?android:attr/colorAccent" android:textSize="80dp" android:textAlignment="center"
+                android:textStyle="bold|italic" android:fontFamily="serif-monospace" android:layout_weight="1.15"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" app:srcCompat="@drawable/paletki" android:id="@+id/imageView"
+                android:layout_weight="0.8" android:contentDescription="TODO"/>
+        <TextView
+                android:text="PONG"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/textView5"
+                android:textColor="@android:color/holo_blue_bright" android:textSize="80dp"
+                android:textAlignment="center"
+                android:textStyle="bold|italic" android:fontFamily="serif-monospace" android:layout_weight="1.15"/>
+        <Button
+                android:text="PLAY!"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/play_button" android:layout_weight="1"
+                android:background="@drawable/framed_button"
+                android:alpha="0.5"
+                android:layout_margin="60dp" android:textColor="@android:color/white" android:textSize="30dp"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
