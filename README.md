@@ -43,3 +43,8 @@ Napisz aplikacje (galeria) przechowującą zdjęcia, każde zdjęcie dodatkowo z
 * poprawnie obsługiwać cykl życia aktywności tzn. onCreate, onStart, onResume, onPause, onStop, onDestroy, ... (te które są potrzebne) 
 * zapamiętywać swój stan po zmianie orientacji ekranu
 * **posiadać możliwość robienia zdjęć (obsługi Camera)** i dodawania do kolekcji
+
+## Lista 5
+
+#### Zadanie 1
+Napisz prostą dwuwymiarową grę w tenisa Pong. Wykorzystaj własne View które będzie odpowiedzialne za odświeżanie gry (rysowanie kolejnych klatek animacji gry w onDraw). Do pobierania zdarzeń wykorzystaj metodę np. onTouchEvent. Wszystkie informacje o stanie gry mają być przechowywane w SharedPreferences.
